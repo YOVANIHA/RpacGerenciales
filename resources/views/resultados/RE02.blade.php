@@ -82,7 +82,7 @@
                                       <p>Descargar el cuadro resumen en pdf</p>
                                     </div>
                                     @else
-                                    <h3 style="color:red;text-align:center;">No se encontraron resultados para este periodo</h3>
+                                    <h3 style="color:red;text-align:center;">No se encontraron resultados para este Mes</h3>
                                     @endif    
                                 </div>
                             </div>
