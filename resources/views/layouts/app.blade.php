@@ -122,6 +122,7 @@
     <script src="{!! asset('assets/vendor/datatables/js/jquery.dataTables.min.js')!!}"></script>
     <script src="{!! asset('assets/vendor/datatables/js/dataTables.bootstrap4.min.js')!!}"></script>
     <script src="{!! asset('assets/vendor/datatables/js/data-table.js')!!}"></script>
+    @yield('scripts')
 </body>
  
 </html>
