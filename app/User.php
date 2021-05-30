@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use App\User;
 use App\Rol;
 
 class User extends Authenticatable
@@ -19,7 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        /*'name',*/ 'email', 'password','codigo_usuario',
+
+        'rol_id', 'email', 'password', 'codigo_usuario', 'nombres', 'apellidos', 'telefono', 'dui',
     ];
 
     /**
@@ -39,11 +39,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    public function getEstadoUsuarioStrAttribute()
+    {
+        return [
+            0 => 'Inactivo',
+            1 => 'Activo'
+        ][$this->estado];
+    }
 
     public function obtenerRol()
     {
-        $rol=Rol::find($this->rol_id);
+        $rol = Rol::find($this->rol_id);
         return $rol;
     }
 }
