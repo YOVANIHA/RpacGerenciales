@@ -17,8 +17,10 @@
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{route('home')}}">Home</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Reportes tácticos</li>
+                                            <li class="breadcrumb-item"><a class="breadcrumb-link"
+                                                    href="{{route('home')}}">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Reportes tácticos
+                                            </li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -80,11 +82,11 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="row justify-content-center">
                                     <div class="col-8">
-                                        <a href="#" class="btn btn-block btn-light">
+                                        <a href="{{route('parametrosRT05')}}" class="btn btn-block btn-light">
                                             <i class="fas fa-file-alt" style="font-size: 150px;color: black;"></i>
                                         </a>
                                         <h5>{{$rt05->codigo_tipo_reporte}} - {{$rt05->descripcion}}</h5>
