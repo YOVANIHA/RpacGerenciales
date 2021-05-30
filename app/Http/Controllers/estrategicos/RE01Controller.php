@@ -27,25 +27,33 @@ class RE01Controller extends Controller
         $tipoReporte=TipoReporte::where('codigo_tipo_reporte','RE01')->first();;
         $fechaInicial=$request->fechaInicial;
         $fechaFinal=$request->fechaFinal;
-        $resultados=DB::select(
+
+        if($fechaFinal<=$fechaInicial)
+            return back()->with('delete','Usted eligió: 
+                <br>Fecha inicial: '.fechaConFormato($fechaInicial).
+                '<br>Fecha final: '.fechaConFormato($fechaFinal).
+                '<br>La fecha final debe ser más reciente que la fecha inicial');
+        else{
+            $resultados=DB::select(
             "SELECT codigo_aduana,nombre_aduana,avg(fecha_estimada_llegada-fecha_ingreso_pedido) tiempoPromedioLlegadas 
              from Declaracion join aduana using(aduana_id) 
              join Proceso_importacion using (proceso_importacion_id) 
              where fecha_ingreso_pedido>? and fecha_ingreso_pedido<? 
              group by codigo_aduana,nombre_aduana",[$fechaInicial,$fechaFinal]);
 
-        /*agregando a la bitacora la generacion del reporte*/
-        $registroBitacora = new RegistroBitacora();
-        $registroBitacora->usuario_id = Auth::user()->id;
-        $registroBitacora->tipo_reporte_id = $tipoReporte->tipo_reporte_id;
-        $registroBitacora->fecha=fechaDeAhora();
-        $registroBitacora->save();
+            /*agregando a la bitacora la generacion del reporte*/
+            $registroBitacora = new RegistroBitacora();
+            $registroBitacora->usuario_id = Auth::user()->id;
+            $registroBitacora->tipo_reporte_id = $tipoReporte->tipo_reporte_id;
+            $registroBitacora->fecha=fechaDeAhora();
+            $registroBitacora->save();
 
-        return view('resultados.RE01',[
-            "tipoReporte"=>$tipoReporte,
-            "resultados"=>$resultados,
-            "fechaInicial"=>$fechaInicial,
-            "fechaFinal"=>$fechaFinal]);
+            return view('resultados.RE01',[
+                "tipoReporte"=>$tipoReporte,
+                "resultados"=>$resultados,
+                "fechaInicial"=>$fechaInicial,
+                "fechaFinal"=>$fechaFinal]);
+        }
     }
 
     /*funcion para descargar el reporte RE01 como pdf*/
