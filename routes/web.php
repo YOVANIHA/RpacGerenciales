@@ -66,3 +66,6 @@ Route::get('/users/{usuario}/edit', 'UsuariosController@edit')->name('usuarios.e
 Route::put('/users/{usuario}', 'UsuariosController@update')->name('usuarios.update');
 Route::delete('/usuarios/{usuario}', 'UsuariosController@destroy')->name('usuarios.destroy');
 Route::get('/home/users-show/{usuario}', 'UsuariosController@show')->name('usuarios.show');
+
+/* PROCESO ETL */
+Route::get('/procesoETL', 'ProcesoETLController@ejecutarProcesoETL')->name('procesoETL');

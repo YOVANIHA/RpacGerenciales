@@ -29,6 +29,18 @@
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
 
+                    <div class="row">
+                        @include('alerts.alerts')
+                    </div>
+                    
+                    <div class="row">
+                        @if(Auth::user()->obtenerRol()->nombre_rol=="Administrador")
+                        <div class="col-sm-12">
+                            <a href="{{route('procesoETL')}}" class="btn btn-primary float-right btn-rounded"><i class="fa fa-play"></i> Ejecutar ETL</a>
+                        </div>
+                        @endif
+                    </div>
+
                     <!-- ============================================================== -->
                     <!-- opciones -->
                     <!-- ============================================================== -->
