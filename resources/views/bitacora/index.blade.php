@@ -43,7 +43,7 @@
                                             <thead style="background-color:black;text-align:center;">
                                                 <tr>
                                                     <th style="color:white;">Fecha</th>
-                                                    <th style="color:white;">Usuario</th>
+                                                    <th style="color:white;">Persona que emitió el reporte</th>
                                                     <th style="color:white;">Reporte realizado</th>
                                                 </tr>
                                             </thead>
@@ -51,12 +51,16 @@
                                                 @foreach($resultados as $res)
                                                 <tr>
                                                     <td>{{fechaConFormato($res->fecha)}}</td>
-                                                    <td>{{$res->codigo_usuario}}</td>
+                                                    <td>{{$res->nombres}} {{$res->apellidos}}</td>
                                                     <td>{{$res->descripcion}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div style="text-align:center;">
+                                      <p><a href="{{ route('descargaBitacora')}}" class="btn btn-info"><i class="fa fa-download" aria-hidden="true" style="font-size:30px"></i></a></p>
+                                      <p>Descargar bitácora en formato pdf</p>
                                     </div>
                                     @else
                                     <h3 style="color:red;text-align:center;">No se encontraron resultados en la bitácora</h3>

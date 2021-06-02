@@ -57,6 +57,7 @@ Route::get('/home/tacticos/RT05/descarga/{fechaInicial}/{fechaFinal}/{idTipoRepo
 
 /*BITACORA*/
 Route::get('/home/bitacora', 'BitacoraController@index')->name('bitacora');
+Route::get('/home/bitacora/descarga', 'BitacoraController@descargarReporte')->name('descargaBitacora');
 
 /* USUARIOS */
 Route::get('/home/users-index', 'UsuariosController@index')->name('users-index');
