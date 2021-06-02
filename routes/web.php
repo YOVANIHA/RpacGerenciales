@@ -38,6 +38,17 @@ Route::get('/home/estrategicos/RE02/resultados', 'estrategicos\RE02Controller@ob
 Route::get('/home/estrategicos/RE02/descarga/{fechaInicial}/{fechaFinal}/{idTipoReporte}', 'estrategicos\RE02Controller@descargarReporte')->name('descargarRE02');
 
 /*REPORTES TÁCTICOS*/
+/*REPORTE TACTICO RT03*/
+Route::get('/home/tacticos/RT03', 'RT03Controller@capturarParametros')->name('parametrosRT03');
+Route::post('/home/tacticos/RT03/resultados', 'RT03Controller@generarResultados')->name('resultadosRT03');
+Route::get('/home/tacticos/RT03/resultados', 'RT03Controller@generarResultados');
+Route::get('/home/tacticos/RT03/descarga/{fechaInicial}/{fechaFinal}/{idTipoReporte}', 'RT03Controller@descargarReporte')->name('descargarRT03');
+/*REPORTE TACTICO RT04*/
+Route::get('/home/tacticos/RT04', 'RT04Controller@capturarParametros')->name('parametrosRT04');
+Route::post('/home/tacticos/RT04/resultados', 'RT04Controller@generarResultados')->name('resultadosRT04');
+Route::get('/home/tacticos/RT04/resultados', 'RT04Controller@generarResultados');
+Route::get('/home/tacticos/RT04/descarga/{existencias}/{idTipoReporte}', 'RT04Controller@descargarReporte')->name('descargarRT04');
+
 /*REPORTE TACTICO RT05*/
 Route::get('/home/tacticos/RT05', 'RT05Controller@capturarParametros')->name('parametrosRT05');
 Route::post('/home/tacticos/RT05/resultados', 'RT05Controller@generarResultados')->name('resultadosRT05');
