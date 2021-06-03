@@ -17,7 +17,7 @@
 <body>
 
     <strong>Reporte: </strong>{{$tipoReporte->codigo_tipo_reporte}} - {{$tipoReporte->descripcion}}<br>
-    <strong>Mes:  </strong><i>{{ Carbon\Carbon::parse($fechaInicial)->monthName }} </i><br>
+    <strong>Mes:  </strong><i>{{ Carbon\Carbon::parse($fechaInicial)->monthName }} {{ Carbon\Carbon::parse($fechaInicial)->year }}</i><br>
     <table class="table table-striped table-bordered first">
         <thead style="background-color:black;text-align:center;">
             <tr>

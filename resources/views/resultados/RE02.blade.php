@@ -38,7 +38,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">{{$tipoReporte->codigo_tipo_reporte}}: {{$tipoReporte->descripcion}}</h5>
-                                <h5 class="card-header" style="color:blue;">Mes: {{ Carbon\Carbon::parse($fechaInicial)->monthName }} </h5>
+                                <h5 class="card-header" style="color:blue;">Mes: {{ Carbon\Carbon::parse($fechaInicial)->monthName }} {{ Carbon\Carbon::parse($fechaInicial)->year }}</h5>
                                 <div class="card-body">
                                     @if(sizeof($resultados)>0)
                                     <div class="table-responsive">

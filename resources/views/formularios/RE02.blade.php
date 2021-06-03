@@ -77,26 +77,24 @@
         <!-- ============================================================== -->
         <!-- end wrapper  -->
         <!-- ============================================================== -->
+        
+        <script>
+            function calcularFechasLimites(){
+                
+                //se separan los componentes del input de tipo month en año y mes
+                anio=mesAnio.value.split("-")[0];
+                mes=mesAnio.value.split("-")[1];
+
+                //se crea la fecha de inicio del periodo
+                start=new Date(anio,mes-1,1);
+                
+                //se añade la fecha inicial al input correspondiente
+                fechaInicial.value=String(start.getFullYear()+'-'+(start.getMonth()+1)+'-'+start.getDate());
+                //se crea la fecha de fin del periodo
+                end=new Date(anio,mes,0);
+
+                //se añade la fecha final al input correspondiente
+                fechaFinal.value=String(end.getFullYear()+'-'+(end.getMonth()+1)+'-'+end.getDate());
+            }
+        </script>
         @endsection
-
-      @section('scripts')
-      <script>
-        function calcularFechasLimites(){
-            
-		//se separan los componentes del input de tipo month en año y mes
-		anio=mesAnio.value.split("-")[0];
-		mes=mesAnio.value.split("-")[1];
-
-		//se crea la fecha de inicio del periodo
-		start=new Date(anio,mes-1,1);
-		
-		//se añade la fecha inicial al input correspondiente
-		fechaInicial.value=String(start.getFullYear()+'-'+(start.getMonth()+1)+'-'+start.getDate());
-		//se crea la fecha de fin del periodo
-		end=new Date(anio,mes,0);
-
-		//se añade la fecha final al input correspondiente
-		fechaFinal.value=String(end.getFullYear()+'-'+(end.getMonth()+1)+'-'+end.getDate());
-        }
-    </script>
-    @endsection
