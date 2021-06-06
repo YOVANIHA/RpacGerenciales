@@ -48,7 +48,7 @@
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="{!! asset('assets/images/avatar-1.jpg')!!}" alt=""
+                                    src="{!! asset('assets/images/avatar.png')!!}" alt=""
                                     class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                                 aria-labelledby="navbarDropdownMenuLink2">
@@ -112,7 +112,8 @@
                                         class="fas fa-fw fa-users"></i>Usuarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-fw fa-list"></i>Bitácora</a>
+                                <a class="nav-link" href="{{ route('bitacora') }}"><i 
+                                class="fas fa-fw fa-list"></i>Bitácora</a>
                             </li>
                             @endif
                         </ul>

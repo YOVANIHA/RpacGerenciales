@@ -51,7 +51,7 @@
                     <i class="fa fa-font"></i>
                 </div>
             </div>
-            <input id="apellidos" name="apellidos" placeholder="Apellidos del" pattern="[A-zÀ-ú\s]+"
+            <input id="apellidos" name="apellidos" placeholder="Apellidos" pattern="[A-zÀ-ú\s]+"
                 title="No se permiten numeros, guiones o simbolos" type="text" required="required" class="form-control"
                 value="{{ old('apellidos') ?? $usuario->apellidos ?? '' }}">
         </div>

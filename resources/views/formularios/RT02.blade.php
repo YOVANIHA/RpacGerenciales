@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">R-Pac El Salvador</h2>
+                                <h2 class="pageheader-title">R-Pac Sistema Gerencial</h2>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -46,7 +46,7 @@
                             <div class="card" style="background-color:lightgray">
                                 <h5 class="card-header">{{$tipoReporte->codigo_tipo_reporte}}: {{$tipoReporte->descripcion}}</h5>
                                 <div class="card-body">
-                                    <p style="text-align:center;color:black;">Seleccione la fecha inicial y final para generar el Reporte</p>
+                                    <p style="text-align:center;color:black;">Seleccione la fecha inicial y final para generar el reporte</p>
                                     <form id="validationform" method="post" action="{{ route('resultadosRT02') }}" enctype="multipart/form-data">
                                         @csrf
                                             <div class="form-group row">

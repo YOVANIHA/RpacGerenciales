@@ -3,7 +3,11 @@
 @section('content')
 <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a class="navbar-brand" style="color:#3947FA;font-size:40px;">R-Pac</a><span class="splash-description">Por favor ingrese la información de su cuenta</span></div>
+            <div class="card-header text-center">
+                <a class="navbar-brand" style="color:#3947FA;font-size:40px;">R-Pac</a>
+                <a class="navbar-brand" style="color:#3947FA;font-size:20px;">Sistema gerencial</a><br>
+                <span class="splash-description">Por favor ingrese la información de su cuenta</span>
+            </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -23,27 +27,12 @@
                             </span>
                         @enderror
                     </div>
-
-                    <!--<div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                            </label>
-                        </div>
-                    </div>-->
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
                         {{ __('Login') }}
                     </button>
                 </form>
             </div>
-            <!--<div class="card-footer bg-white p-0  " style="text-align:center;">
-                @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                @endif
-            </div>-->
+
         </div>
     </div>
 @endsection

@@ -41,7 +41,7 @@ class RT01Controller extends Controller
             join Factura using (declaracion_id)
             join Proceso_importacion using (proceso_importacion_id) 
             where fecha_ingreso_pedido>? and fecha_ingreso_pedido<? 
-            group by proceso_importacion_id",[$fechaInicial,$fechaFinal]);
+            group by proceso_importacion_id,nombre_importacion",[$fechaInicial,$fechaFinal]);
 
       
            // dd($resultados1);
@@ -75,7 +75,7 @@ class RT01Controller extends Controller
             join Factura using (declaracion_id)
             join Proceso_importacion using (proceso_importacion_id) 
             where fecha_ingreso_pedido>? and fecha_ingreso_pedido<? 
-            group by proceso_importacion_id",[$fechaInicial,$fechaFinal]);
+            group by proceso_importacion_id,nombre_importacion",[$fechaInicial,$fechaFinal]);
        
 
         $pdf = PDF::loadView('descargas.RT01', [

@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header">
-                        <h2 class="pageheader-title">R-Pac El Salvador</h2>
+                        <h2 class="pageheader-title">R-Pac Sistema Gerencial</h2>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -33,6 +33,10 @@
             <!-- end pageheader  -->
             <!-- ============================================================== -->
 
+            <div class="row">
+                @include('alerts.alerts')
+            </div>
+
             <!-- ============================================================== -->
             <!-- opciones -->
             <!-- ============================================================== -->
@@ -46,7 +50,7 @@
                         </h5>
                         <div class="card-body">
                             <p style="text-align:center;color:black;">Seleccione la fecha inicial y final para generar
-                                el reporte.</p>
+                                el reporte</p>
                             <form id="validationform" method="post" action="{{ route('resultadosRT05') }}"
                                 enctype="multipart/form-data">
                                 @csrf

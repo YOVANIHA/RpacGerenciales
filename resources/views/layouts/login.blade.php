@@ -18,7 +18,7 @@
     }
 
     body {
-        background-color: #1C1C1C;
+        /*background-color: #1C1C1C;*/
         display: -ms-flexbox;
         display: flex;
         -ms-flex-align: center;
@@ -29,7 +29,7 @@
     </style>
 </head>
 
-<body>
+<body background="{!! asset('assets/images/fondologin.jpg')!!}">
     <!-- ============================================================== -->
     <!-- login page  -->
     <!-- ============================================================== -->

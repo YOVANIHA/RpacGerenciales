@@ -39,7 +39,7 @@ class RT02Controller extends Controller
             from Proveedor 
             join Factura using (proveedor_id)
             where fecha_emision_factura>? and fecha_emision_factura<? 
-            group by proveedor_id",[$fechaInicial,$fechaFinal]);
+            group by proveedor_id,nombre_proveedor",[$fechaInicial,$fechaFinal]);
 
       
            // dd($resultados1);
@@ -72,7 +72,7 @@ class RT02Controller extends Controller
             from Proveedor 
             join Factura using (proveedor_id)
             where fecha_emision_factura>? and fecha_emision_factura<? 
-            group by proveedor_id",[$fechaInicial,$fechaFinal]); 
+            group by proveedor_id,nombre_proveedor",[$fechaInicial,$fechaFinal]); 
      
        
 

@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">R-Pac El Salvador</h2>
+                                <h2 class="pageheader-title">R-Pac Sistema Gerencial</h2>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -78,7 +78,7 @@
                                     <div class="col-16 col-md-4 col-xl-3">
                                         <div class="row">
                                             <div class="col-16">
-                                                <a href="#" class="btn btn-block btn-light">
+                                                <a href="{{route('users-index')}}" class="btn btn-block btn-light">
                                                     <i class="fas fa-users" style="font-size: 150px;color: black;"></i>
                                                 </a>
                                                 <h3>Gestión de usuarios</h3>

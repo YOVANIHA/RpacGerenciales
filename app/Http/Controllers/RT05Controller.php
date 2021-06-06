@@ -25,27 +25,35 @@ class RT05Controller extends Controller
         $tipoReporte = TipoReporte::where('codigo_tipo_reporte', 'RT05')->first();;
         $fechaInicial = $request->fechaInicial;
         $fechaFinal = $request->fechaFinal;
-        $resultados = DB::select(
-            "SELECT nombre_proveedor, count(orden_de_compra_id) cantidad, sum(total_orden) total 
-            from orden_de_compra join proveedor USING (proveedor_id)
-            where fecha_emision_orden > ? and fecha_emision_orden < ?
-            group by proveedor_id, nombre_proveedor",
-            [$fechaInicial, $fechaFinal]
-        );
 
-        /*agregando a la bitacora la generacion del reporte*/
-        $registroBitacora = new RegistroBitacora();
-        $registroBitacora->usuario_id = Auth::user()->id;
-        $registroBitacora->tipo_reporte_id = $tipoReporte->tipo_reporte_id;
-        $registroBitacora->fecha = fechaDeAhora();
-        $registroBitacora->save();
+        if($fechaFinal<=$fechaInicial)
+            return back()->with('delete','Usted eligió: 
+                <br>Fecha inicial: '.fechaConFormato($fechaInicial).
+                '<br>Fecha final: '.fechaConFormato($fechaFinal).
+                '<br>La fecha final debe ser más reciente que la fecha inicial');
+        else{
+            $resultados = DB::select(
+                "SELECT nombre_proveedor, count(orden_de_compra_id) cantidad, sum(total_orden) total 
+                from orden_de_compra join proveedor USING (proveedor_id)
+                where fecha_emision_orden > ? and fecha_emision_orden < ?
+                group by proveedor_id, nombre_proveedor",
+                [$fechaInicial, $fechaFinal]
+            );
 
-        return view('resultados.RT05', [
-            "tipoReporte" => $tipoReporte,
-            "resultados" => $resultados,
-            "fechaInicial" => $fechaInicial,
-            "fechaFinal" => $fechaFinal
-        ]);
+            /*agregando a la bitacora la generacion del reporte*/
+            $registroBitacora = new RegistroBitacora();
+            $registroBitacora->usuario_id = Auth::user()->id;
+            $registroBitacora->tipo_reporte_id = $tipoReporte->tipo_reporte_id;
+            $registroBitacora->fecha = fechaDeAhora();
+            $registroBitacora->save();
+
+            return view('resultados.RT05', [
+                "tipoReporte" => $tipoReporte,
+                "resultados" => $resultados,
+                "fechaInicial" => $fechaInicial,
+                "fechaFinal" => $fechaFinal
+            ]);
+        }
     }
 
     /*funcion para descargar el reporte RT05 como pdf*/

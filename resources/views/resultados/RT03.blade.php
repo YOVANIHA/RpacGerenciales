@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">R-Pac El Salvador</h2>
+                                <h2 class="pageheader-title">R-Pac Sistema Gerencial</h2>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -80,7 +80,7 @@
                                     </div>
                                     <div style="text-align:center;">
                                       <p><a href="{{ route('descargarRT03',[$fechaInicial, $fechaFinal,$tipoReporte->tipo_reporte_id]) }}" class="btn btn-info"><i class="fa fa-download" aria-hidden="true" style="font-size:30px"></i></a></p>
-                                      <p>Descargar el cuadro resumen en pdf</p>
+                                      <p>Descargar reporte en pdf</p>
                                     </div>
                                     @else
                                     <h3 style="color:red;text-align:center;">No se encontraron resultados para este Mes</h3>
