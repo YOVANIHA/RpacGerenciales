@@ -51,7 +51,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="row justify-content-center">
                                     <div class="col-8">
-                                        <a href="#" class="btn btn-block btn-light">
+                                        <a href="{{route('parametrosRT02')}}" class="btn btn-block btn-light">
                                             <i class="fas fa-file-alt" style="font-size: 150px;color: black;"></i>
                                         </a>
                                         <h5>{{$rt02->codigo_tipo_reporte}} - {{$rt02->descripcion}}</h5>

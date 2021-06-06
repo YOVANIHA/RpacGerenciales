@@ -10,21 +10,20 @@ use App\RegistroBitacora;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 
-class RT01Controller extends Controller
+class RT02Controller extends Controller
 {
-    
     //
-    /*funcion para llamar a la vista de captura de parametros del reporte RT01*/
+    /*funcion para llamar a la vista de captura de parametros del reporte RT02*/
     public function capturarParametros(Request $request)
     {
-        $tipoReporte=TipoReporte::where('codigo_tipo_reporte','RT01')->first();
-        return view('formularios.RT01',[
+        $tipoReporte=TipoReporte::where('codigo_tipo_reporte','RT02')->first();
+        return view('formularios.RT02',[
         "tipoReporte"=>$tipoReporte]);
     }
 
     public function generarResultados(Request $request)
     {
-        $tipoReporte = TipoReporte::where('codigo_tipo_reporte', 'RT01')->first();;
+        $tipoReporte = TipoReporte::where('codigo_tipo_reporte', 'RT02')->first();;
         $fechaInicial = $request->fechaInicial;
         $fechaFinal = $request->fechaFinal;
         if($fechaFinal<=$fechaInicial)
@@ -34,14 +33,13 @@ class RT01Controller extends Controller
                 '<br>La fecha final debe ser más reciente que la fecha inicial');
         else{
         $resultados1 = DB::select(
-            "SELECT nombre_importacion,sum(total_factura) as montoFacturas, 
-            count(IF(pago_impuestos=0,1,null)) as pendiente,
-            count(IF(pago_impuestos=1,1,null)) as solvente
-            from Declaracion 
-            join Factura using (declaracion_id)
-            join Proceso_importacion using (proceso_importacion_id) 
-            where fecha_ingreso_pedido>? and fecha_ingreso_pedido<? 
-            group by proceso_importacion_id",[$fechaInicial,$fechaFinal]);
+            "SELECT nombre_proveedor,sum(total_factura) as montoFacturas, 
+            count(IF(condiciones_pago='Contado',1,null)) as contado,
+            count(IF(condiciones_pago='Credito',1,null)) as credito
+            from Proveedor 
+            join Factura using (proveedor_id)
+            where fecha_emision_factura>? and fecha_emision_factura<? 
+            group by proveedor_id",[$fechaInicial,$fechaFinal]);
 
       
            // dd($resultados1);
@@ -53,7 +51,7 @@ class RT01Controller extends Controller
         $registroBitacora->fecha = fechaDeAhora();
         $registroBitacora->save();
 
-        return view('resultados.RT01', [
+        return view('resultados.RT02', [
             "tipoReporte" => $tipoReporte,
             "resultados1" => $resultados1,
             "fechaInicial" => $fechaInicial,
@@ -68,17 +66,17 @@ class RT01Controller extends Controller
     {
         $tipoReporte = TipoReporte::find($idTipoReporte);
         $resultados1 = DB::select(
-            "SELECT nombre_importacion,sum(total_factura) as montoFacturas, 
-            count(IF(pago_impuestos=0,1,null)) as pendiente,
-            count(IF(pago_impuestos=1,1,null)) as solvente
-            from Declaracion 
-            join Factura using (declaracion_id)
-            join Proceso_importacion using (proceso_importacion_id) 
-            where fecha_ingreso_pedido>? and fecha_ingreso_pedido<? 
-            group by proceso_importacion_id",[$fechaInicial,$fechaFinal]);
+            "SELECT nombre_proveedor,sum(total_factura) as montoFacturas, 
+            count(IF(condiciones_pago='Contado',1,null)) as contado,
+            count(IF(condiciones_pago='Credito',1,null)) as credito
+            from Proveedor 
+            join Factura using (proveedor_id)
+            where fecha_emision_factura>? and fecha_emision_factura<? 
+            group by proveedor_id",[$fechaInicial,$fechaFinal]); 
+     
        
 
-        $pdf = PDF::loadView('descargas.RT01', [
+        $pdf = PDF::loadView('descargas.RT02', [
             "tipoReporte" => $tipoReporte,
             "resultados1" => $resultados1,
             "fechaInicial" => $fechaInicial,
@@ -86,4 +84,6 @@ class RT01Controller extends Controller
         ]);
         return $pdf->download($tipoReporte->descripcion . '-' . $fechaInicial . '-' . $fechaFinal . '.pdf');
     }
+
+
 }
