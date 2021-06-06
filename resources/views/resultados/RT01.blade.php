@@ -18,8 +18,9 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{route('home')}}">Home</a></li>
-                                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{route('estrategicos')}}">Reportes estratégicos</a></li>
-                                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{route('parametrosRE03')}}">Reporte {{$tipoReporte->codigo_tipo_reporte}}</a></li>
+                                            <li class="breadcrumb-item"><a class="breadcrumb-link"
+                                                href="{{route('tacticos')}}">Reportes T&aacute;cticos </a></li>
+                                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{route('parametrosRT01')}}">Reporte {{$tipoReporte->codigo_tipo_reporte}}</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Resultados</li>
                                         </ol>
                                     </nav>
@@ -38,46 +39,41 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">{{$tipoReporte->codigo_tipo_reporte}}: {{$tipoReporte->descripcion}}</h5>
-                                <h5 class="card-header">PERIODO 1</h5>
                                 <h5 class="card-header">Fecha inicial: {{fechaConFormato($fechaInicial)}} <br> Fecha final: {{fechaConFormato($fechaFinal)}}</h5>
-                                <h5 class="card-header">PERIODO 2</h5>
-                                <h5 class="card-header">Fecha inicial: {{fechaConFormato($fechaInicial2)}} <br> Fecha final: {{fechaConFormato($fechaFinal2)}}</h5>
                                 <div class="card-body">
-                                    @if(sizeof($resultados)>0)
+                                    @if(sizeof($resultados1)>0)
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered first">
                                             <thead style="background-color:black;text-align:center;">
                                                 <tr>
-                                                    <th style="color:white;">Código aduana</th>
-                                                    <th style="color:white;">Nombre aduana</th>
-                                                    <th style="color:white;">Monton para periodo 1</th>
-                                                    <th style="color:white;">Monton para periodo 2</th>
-                                                    <th style="color:white;">Variación Absoluta</th>
-                                                    <th style="color:white;">Variación Relativa</th>
+                                                    <th style="color:white;">Nombre del proceso de importacion</th>
+                                                    <th style="color:white;">Monto total en facturas</th>
+                                                    <th style="color:white;">Pendientes</th>
+                                                    <th style="color:white;">Solventes</th>
                                                 </tr>
                                             </thead>
+                                            
                                             <tbody>
-                                                @foreach($resultados as $res)
-                                                @foreach($resultados2 as $res2)
+                                                @foreach($resultados1 as $res)
                                                 <tr>
-                                                    <td>{{$res->codigo_aduana}}</td>
-                                                    <td>{{$res->nombre_aduana}}</td>
-                                                    <td>${{$res->suma1}}</td>
-                                                    <td>${{$res2->suma2}}</td>
-                                                    <td>${{$res->suma1-$res2->suma2}}</td>
-                                                    <td>{{round((($res->suma1-$res2->suma2)/$res2->suma2),2)*100}}%</td>
+                                                    <td>{{$res->nombre_importacion}}</td>
+                                                    <td>${{$res->montoFacturas}}</td>
+                                                    <td>{{$res->pendiente}}</td>
+                                                    <td>{{$res->solvente}}</td>
+                                                   
                                                 </tr>
                                                 @endforeach
-                                                @endforeach
+
                                             </tbody>
+
                                         </table>
                                     </div>
                                     <div style="text-align:center;">
-                                      <p><a href="{{ route('descargarRE03',[$fechaInicial, $fechaFinal, $fechaInicial2, $fechaFinal2,$tipoReporte->tipo_reporte_id]) }}" class="btn btn-info"><i class="fa fa-download" aria-hidden="true" style="font-size:30px"></i></a></p>
-                                      <p>Descargar el cuadro comparativo en pdf</p>
+                                      <p><a href="{{ route('descargarRT01',[$fechaInicial, $fechaFinal,$tipoReporte->tipo_reporte_id]) }}" class="btn btn-info"><i class="fa fa-download" aria-hidden="true" style="font-size:30px"></i></a></p>
+                                      <p>Descargar reporte en pdf</p>
                                     </div>
                                     @else
-                                    <h3 style="color:red;text-align:center;">No se encontraron resultados para este periodo</h3>
+                                    <h3 style="color:red;text-align:center;">No se encontraron resultados para este Mes</h3>
                                     @endif    
                                 </div>
                             </div>

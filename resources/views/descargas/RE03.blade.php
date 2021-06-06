@@ -26,26 +26,26 @@
     <strong> </strong><br>
     <table class="table table-striped table-bordered first">
         <thead style="background-color:black;text-align:center;">
-            <tr>
-            <th style="color:white;">Código aduana</th>
-            <th style="color:white;">Nombre aduana</th>
-            <th style="color:white;">Monton para periodo 1 ($)</th>
-            <th style="color:white;">Monton para periodo 2 ($)</th>
-            <th style="color:white;">Variación ($)</th>
-            <th style="color:white;">Variación (%)</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($resultados as $res)
-        @foreach($resultados2 as $res2)
-            <tr>
-            <td>{{$res->codigo_aduana}}</td>
-            <td>{{$res->nombre_aduana}}</td>
-            <td>{{$res->suma1}}</td>
-            <td>{{$res2->suma2}}</td>
-            <td>{{$res->suma1-$res2->suma2}}</td>
-            <td>{{round((($res->suma1-$res2->suma2)/$res2->suma2),2)}}</td>
-            </tr>
+        <tr>
+                                                    <th style="color:white;">Código aduana</th>
+                                                    <th style="color:white;">Nombre aduana</th>
+                                                    <th style="color:white;">Monton para periodo 1</th>
+                                                    <th style="color:white;">Monton para periodo 2</th>
+                                                    <th style="color:white;">Variación Absoluta</th>
+                                                    <th style="color:white;">Variación Relativa</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($resultados as $res)
+                                                @foreach($resultados2 as $res2)
+                                                <tr>
+                                                    <td>{{$res->codigo_aduana}}</td>
+                                                    <td>{{$res->nombre_aduana}}</td>
+                                                    <td>${{$res->suma1}}</td>
+                                                    <td>${{$res2->suma2}}</td>
+                                                    <td>${{$res->suma1-$res2->suma2}}</td>
+                                                    <td>{{round((($res->suma1-$res2->suma2)/$res2->suma2),2)*100}}%</td>
+                                                </tr>
         @endforeach
         @endforeach
         </tbody>

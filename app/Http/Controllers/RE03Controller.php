@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class RE03Controller extends Controller
 {
     //
-        /*funcion para llamar a la vista de captura de parametros del reporte RE01*/
+        /*funcion para llamar a la vista de captura de parametros del reporte RE03*/
         public function capturarParametros(Request $request)
         {
             $tipoReporte=TipoReporte::where('codigo_tipo_reporte','RE03')->first();
