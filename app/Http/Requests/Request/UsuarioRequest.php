@@ -27,6 +27,7 @@ class UsuarioRequest extends FormRequest
     public function rules()
     {
         return [
+            'codigo_usuario' => [Rule::unique('users')->ignore($this->usuario->codigo_usuario ?? null),],
             'nombres' => 'required|string|regex:/^[A-zÀ-ú\s]+$/',
             'apellidos' => 'required|string|regex:/^[A-zÀ-ú\s]+$/',
             'estado' => 'sometimes|boolean',
